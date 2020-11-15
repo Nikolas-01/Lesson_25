@@ -8,7 +8,7 @@ ENV PYTHONUNBUFFERED 1
 WORKDIR /code
 
 # Copy project
-COPY . /code/
+COPY .. /code/
 
 RUN pip install --upgrade pip
 
