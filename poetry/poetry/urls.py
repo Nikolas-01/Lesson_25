@@ -6,7 +6,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 
-from rest_framework import routers, serializers, viewsets
+from rest_framework import routers
 from poems.api_views import TagViewSet, EmelyanovaPoemViewSet
 
 
@@ -31,7 +31,7 @@ urlpatterns = [
     path('poems/', include('poems.urls')),
     path('users/', include('users.urls')),
     path('analytics/', include('analytics.urls')),
-    path('', views.home_page, name = 'home'),
+    path('', views.home_page, name ='home'),
     path('api/v0/', include(router.urls)),
     path('api_token/', CustomAuthToken.as_view())
 
