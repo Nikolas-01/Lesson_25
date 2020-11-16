@@ -1,0 +1,74 @@
+/* для отображения стихов*/
+
+@media (min-width: 500px){
+    .container-1 {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        flex-wrap: wrap;
+
+}
+    }
+
+    .container-1 div {
+        padding: 10px;
+        border: 1px solid silver;
+
+
+    }
+    .box-flex {
+        margin: 10px;
+        flex-basis: 50%;
+
+
+
+
+    }
+
+    .text-poem {
+        white-space: pre-wrap;
+
+    }
+
+/* для отображения ТОП 100*/
+
+.words_counts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+
+.words_counts .words_counts_elements {
+    background-color: rgba(65, 105, 225, 0.5);
+    color: white;
+    margin: 1em;
+    text-align: center;
+    flex-basis: 50%;
+}
+
+/*Словарь стихотворения*/
+
+.container-dict {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+.container-dict div {
+        margin: 10px;
+        padding: 10px;
+        border: 1px solid silver;
+        background-color: rgba(255, 228, 181, 0.5)
+    }
+
+/*контейнер для чисел*/
+
+    .container-numbers {
+    display: flex;
+    justify-content: center;
+
+    }
