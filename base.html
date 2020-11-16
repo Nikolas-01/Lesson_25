@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords" content="стихи, литература">
+    <meta name="description" content="Стихи.">
+    <title>Poems</title>
+    {% load static %}
+    <link rel="stylesheet" href='{% static "poems/style.css" %}'>
+    <link rel="stylesheet" href='{% static "poems/style-menu.css" %}'>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href='{% static "poems/animate.css" %}'>
+    <link rel="stylesheet" href='{% static "poems/flex.css" %}'>
+</head>
+
+<style>
+html,
+body {
+  height: 100%;
+}
+#wrap {
+  min-height: 100%;
+}
+main {
+  padding-bottom: 100px;
+  /*Высота футера*/
+}
+footer {
+  margin-top: -100px;
+  /*Минус Высота футера*/
+  height: 100px;
+  /*Высота футера*/
+}
+</style>
+<div id="wrap">
+<body class="light-theme">
+
+<header>
+
+    <div class="burger-menu">
+        <a href="#" class="burger-menu__button">
+            <span class="burger-menu__lines"></span>
+        </a>
+
+        <nav class="burger-menu__nav">
+            <span  style="text-align: center">
+                <button type="submit" class="btn-01 btn-light wow jackInTheBox">DARK/LIGHT MODE</button>
+            </span>
+            <a class="burger-menu__link" href="{% url 'home' %}">&cir; Home</a>
+            <a class="burger-menu__link" href="/api/v0/">&EmptySmallSquare; API</a>
+            {% if user.is_authenticated %}
+            <a class="burger-menu__link" href="{% url 'users:get_token' %}">&#9872; Token</a>
+            {% endif %}
+
+            {% if user.is_superuser %}
+            <a class="burger-menu__link" href="{% url 'poems:poem_add' %}">&#10052; Add</a>
+            {% endif %}
+                {% if user.is_authenticated %}
+            <p class="auth_phrase">Рады приветствовать, <br>{{user.username}}</p>
+            <a class="burger-menu__link" href="{% url 'users:logout' %}">&#10006; Exit</a>
+                {% else %}
+            <a class="burger-menu__link" href="{% url 'users:login' %}">&#9786; Auth</a>
+            <a class="burger-menu__link" href="{% url 'users:register' %}">&#10086; Register</a>
+            {% endif %}
+
+        </nav>
+
+        <div class="burger-menu__overlay"></div>
+
+</div>
+
+<span>
+    <h3 class="wow zoomIn" style="text-align: center; padding-top: 50px;">MetaPoet</h3>
+    <h4 class="wow zoomIn" style="text-align: center">Clara Emelyanova</h4>
+
+
+</span>
+
+</header>
+
+<main>
+{% block content %}{% endblock %}
+</main>
+</div>
+<footer>
+    <div class="footer-class">
+        <p>&#10026; Developed by <a href="https://github.com/tahoeivanova">Tahoe Ivanova</a></p>
+    </div>
+</footer>
+<script src="{% static 'poems/script.js' %}"></script>
+<script src="{% static 'poems/animation-text.js' %}"></script>
+<script src="https://js.cx/libs/animate.js"></script>
+
+<script src="{% static 'poems/wow.min.js' %}"></script>
+<script src="{% static 'poems/archimed-spiral.js' %}"></script>
+
+<script src="http://code.jquery.com/jquery-1.8.3.js"></script>
+<script src="{% static 'poems/script-menu.js' %}"></script>
+
+
+<script>
+    new WOW().init();
+</script>
+</body>
+</html>
+

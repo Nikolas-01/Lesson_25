@@ -1,0 +1,24 @@
+{% extends 'poems/base.html'%}
+{% block content %}
+<header>
+</header>
+
+    {% load static %}
+<div style="margin: 10px; text-align: center">
+    <h3 style="margin-bottom: 10px">{{poem.poem_title}}</h3>
+
+    <audio  controls preload="auto">
+        <source src="{{poem.poem_audio.url}}" type="audio/mpeg">
+        <source src="{{poem.poem_audio.url}}" type="audio/ogg">
+        Ваш браузер не поддерживает тег audio ОБНОВИТЕ БРАУЗЕР!
+    </audio>
+    </br>
+    {% if poem.poem_img %}
+    <img src="{{poem.poem_img.url}}" height='300' alt="{{poem.title}}">
+    {% endif %}
+    <pre>{{poem.poem_text}}</pre>
+
+
+</div>
+
+{% endblock %}

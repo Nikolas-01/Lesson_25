@@ -1,0 +1,31 @@
+{% extends 'poems/base.html'%}
+{% block content %}
+<header>
+</header>
+
+<div style="margin-left:10px">
+    <h3 class="text-title"><a href="{% url 'analytics:pd' pk=object.pk%}">{{object.poem_title}}</a></h3>
+    <textarea class="text" id="textExample" rows="10" cols="60">{{object.poem_text}}</textarea>
+    <button onclick="animateText(textExample)" class="btn-light btn btn-send-message btn-md" type="submit">Запустить анимацию набора текста!</button>
+
+</div>
+<p>Количество тэгов: {{object.tag_number}}</p>
+<div>
+    <p>Тэги:</p>
+    <ul>
+        {% for i in object.poem_tag.all %}
+        <li>{{i}}</li>
+        {%endfor%}
+    </ul>
+</div>
+<p><a href="{% url 'poems:audio' pk=object.pk %}">Аудио</a></p>
+
+<p><a href="{% url 'analytics:pd' pk=object.pk %}">Словарь стихотворения</a></p>
+
+{% if user.is_superuser %}
+    <p><a href="{% url 'poems:poem_update' pk=object.pk %}">Изменить</a></p>
+    <p><a href="{% url 'poems:poem_delete' pk=object.pk %}">Удалить</a></p>
+    <p
+    ><a href="{% url 'poems:poem_add' %}" target="_blank">Добавить стих</a></p>
+{% endif %}
+{% endblock %}
